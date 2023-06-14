@@ -60,7 +60,7 @@ async insertMany(body){
   const cliente =new MongoClient(uri);
   try {
       await cliente.connect()
-      const resultado= await cliente.db('Beautysoft').collection('citasJhon').insertMany(body);
+      const resultado= await cliente.db('Beautysoft').collection('estilistaJhon').insertMany(body);
       return resultado;
   } catch (error) {
       console.log(error);
