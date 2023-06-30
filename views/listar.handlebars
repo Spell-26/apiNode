@@ -1,0 +1,39 @@
+
+
+    <h1>Todos los estilistas</h1>
+    <h2>Buscar estilista</h2>
+    <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon1">Buscar:</span>
+        <form action="/estilistasJames/buscar" method="post">
+            <input type="text" class="form-control" placeholder="_id" aria-label="Username" aria-describedby="basic-addon1" name="id">
+        </form>
+    </div>
+    <button type="button" class="btn btn-primary"><a href="/estilistasJames/nuevo" style="color: aliceblue">Crear estilista</a> </button>
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Correo</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Apellido</th>
+            <th scope="col">Estado</th>
+            <th scope="col">Telefono</th>
+            <th scope="col">Eliminar</th>
+        </tr>
+        </thead>
+        <tbody>
+        {{#each result}}
+        <tr>
+            <th scope="row">{{this._id}} </th>
+            <td>{{this.correo}}</td>
+            <td>{{this.nombre}}</td>
+            <td>{{this.apellido}}</td>
+            <td>{{this.estado}}</td>
+            <td>{{this.telefono}}</td>
+            <td><button><a href="/estilistasJames/eliminar/{{this._id}}">X</a></button></td>
+            <td><button><a href="/estilistasJames/actualizar/{{this._id}}">Actualizar</a></button></td>
+        </tr>
+        {{/each}}
+        </tbody>
+    </table>
+

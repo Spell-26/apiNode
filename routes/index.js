@@ -6,7 +6,7 @@ const routerEstilistasJames = require('./routesEstilistasJames');
 const routerClientesJames = require('./routesClientesJames');
 
 function routerApi(app){
-    app.use('/citasJhon', routerCitas),
+    app.use('/citasJhon', routerCitas);
     app.use('/serviciosJhon',routerServicios);
     app.use('/estilistaJhon',routerEstilistas);
     app.use('/citasJames', routerCitasJames);
