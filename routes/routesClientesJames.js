@@ -15,31 +15,39 @@ router.get('/', async (req,res)=>{
     const resultado = await services.clientes();
 
     if(resultado.length>0){
-        res.status(200).send(resultado);
+        res.status(200).render('listarCliente', {
+            result: resultado
+        });
     }else{
         res.status(404).send('No encontró infromación');
     }
 })
 
-//filtrar estilista
-router.get('/:id', async (req, res)=>{
-    const id = req.params.id;
+//filtrar cliente
+router.post('/buscar', async (req, res)=>{
+    const id = req.body.id;
         const resultado = await services.buscarCliente(id);
         if(resultado){
-            res.status(200).send(resultado);
+            res.status(200).render('buscarCliente', {
+                result: resultado
+            });
         }else{
             res.status(404).send("No se encontro la información");
         }
 })
 
 //Nuevo estilista
-router.post('/', async (req, res)=>{
+router.get('/nuevo', async (req, res)=> {
+
+    res.status(200).render('clienteNuevo');
+})
+
+router.post('/nuevo', async (req, res)=>{
     const body = req.body;
         const resultado = await services.nuevoCliente(body);
         if(resultado){
-            res.status(201).json({
-                message: 'Se creo el estilista',
-                resultado
+            res.status(201).render('clienteCreado', {
+                result: resultado
             });
         }else{
             res.status(404).send("No se creó el estilista");
@@ -61,29 +69,39 @@ router.post('/', async (req, res)=>{
 })
 
 //eliminar estilista
-router.delete('/:id', async (req, res)=>{
+router.get('/eliminar/:id', async (req, res)=>{
     const id = req.params.id;
         const resultado = await services.eliminarCliente(id);
         if(resultado){
-            res.status(200).send(resultado);
+            res.status(200).redirect('/clientesJames')
         }else{
             res.status(404).send("No se encontro la información");
         }
 })
 
 //actualizar estilista
-router.patch('/:id', async (req, res)=>{
+
+router.get('/actualizar/:id', async (req, res)=>{
     const id = req.params.id;
-    
+    const resultado = await services.buscarCliente(id);
+    if(resultado){
+        res.status(200).render('clienteActualizar', {
+            result: resultado
+        });
+    }else{
+        res.status(404).send("No se encontro la información");
+    }
+})
+
+router.post('/actualizarCliente', async (req, res)=>{
+    const id = req.body.id;
+
     const nombre =req.body.nombre;
     const apellido =req.body.apellido;
 
         const resultado = await services.actualizarCliente(id,nombre, apellido);
         if(resultado){
-            res.status(201).json({
-                message: 'Se actualizó el estilista',
-                resultado
-            });
+            res.status(201).redirect('/clientesJames');
         }else{
             res.status(404).send("No se actualizó el estilista");
         }

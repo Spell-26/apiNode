@@ -1,0 +1,16 @@
+<h1>Actualizar cliente</h1>
+<form method="post" action="/clientesJames/actualizarCliente/">
+    <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Nombre</label>
+        <input type="text" class="form-control" value="{{result.nombre}}" name="nombre">
+
+    </div>
+    <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Apellido</label>
+        <input type="text" class="form-control" value="{{result.apellido}}" name="apellido">
+    </div>
+    <div class="mb-3 form-check" >
+        <input type="text"  class="form-control" value="{{result._id}}" name="id" >
+    </div>
+    <button type="submit" class="btn btn-primary">Actualizar</button>
+</form>

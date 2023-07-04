@@ -1,0 +1,37 @@
+
+
+<h1>Todos los clientes</h1>
+<h2>Buscar cliente</h2>
+<div class="input-group mb-3">
+    <span class="input-group-text" id="basic-addon1">Buscar:</span>
+    <form action="/clientesJames/buscar" method="post">
+        <input type="text" class="form-control" placeholder="_id" aria-label="Username" aria-describedby="basic-addon1" name="id">
+    </form>
+</div>
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Correo</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Apellido</th>
+        <th scope="col">Estado</th>
+        <th scope="col">Telefono</th>
+        <th scope="col">Eliminar</th>
+    </tr>
+    </thead>
+    <tbody>
+
+    <tr>
+        <th scope="row">{{result._id}} </th>
+        <td>{{result.correo}}</td>
+        <td>{{result.nombre}}</td>
+        <td>{{result.apellido}}</td>
+        <td>{{result.estado}}</td>
+        <td>{{result.telefono}}</td>
+        <td><button><a href="/clientesJames/eliminar/{{result._id}}">X</a></button></td>
+    </tr>
+
+    </tbody>
+</table>
+

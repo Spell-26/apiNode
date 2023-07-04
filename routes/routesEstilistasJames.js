@@ -83,7 +83,6 @@ router.post('/', async (req, res)=>{
 //eliminar estilista
 router.get('/eliminar/:id', async (req, res)=>{
     const id = req.params.id;
-    console.log("asdas",id);
         const resultado = await services.eliminarEstilista(id);
         if(resultado){
             res.status(200).redirect('/estilistasJames')
